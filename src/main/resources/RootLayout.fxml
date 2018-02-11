@@ -7,9 +7,6 @@
 
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
-  <bottom>
-    <fx:include fx:id="sampleView" source="sample.fxml" />
-  </bottom>
   <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -31,4 +28,7 @@
         </menus>
       </MenuBar>
    </top>
+  <bottom>
+    <fx:include fx:id="DatabaseLayout" source="DatabeseLayout.fxml" />
+  </bottom>
 </BorderPane>
