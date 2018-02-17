@@ -22,12 +22,6 @@ public class Main extends Application {
 
 //    static {
 //
-
-
-//     postalcode;
-//     city;
-//     birthday;
-//     street;
 //    }
 
     public Main() {
@@ -45,7 +39,12 @@ public class Main extends Application {
         person2.setStreet("Powstańców Warszawy 3");
         personObservableList.add(person2);
 
-        personObservableList.add(new Person("Adam", "Małysz"));
+        Person person3 = new Person("Adam", "Małysz");
+        person3.setPostalcode("00-020");
+        person3.setCity("Warszawa");
+        person3.setBirthday("12-02-1934");
+        person3.setStreet("Powstańców Warszawy 3");
+        personObservableList.add(person3);
 
         personObservableList.add(new Person("Karol", "Kozłowski"));
 
@@ -67,15 +66,15 @@ public class Main extends Application {
 
         personObservableList.add(new Person("Agata", "Małolata"));
 
-        personObservableList.add(new Person("Monika", "Duda"));
+        personObservableList.add(new Person("Monika", "Budka"));
 
-        personObservableList.add(new Person("Lucyna", "Małysz"));
+        personObservableList.add(new Person("Lucyna", "Giełzak"));
 
-        personObservableList.add(new Person("Marek", "Kozłowski"));
+        personObservableList.add(new Person("Marek", "Giełzak"));
 
-        personObservableList.add(new Person("Bartosz", "Hetman"));
+        personObservableList.add(new Person("Bartosz", "Woicyki"));
 
-        personObservableList.add(new Person("Dionizy", "Nałęcz"));
+        personObservableList.add(new Person("Dionizy", "Wspólny"));
     }
 
 
@@ -112,4 +111,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+
 }

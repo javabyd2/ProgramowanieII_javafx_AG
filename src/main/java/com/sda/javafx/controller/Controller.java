@@ -2,15 +2,9 @@ package com.sda.javafx.controller;
 
 import com.sda.javafx.Main;
 import com.sda.javafx.model.Person;
-import com.sun.javafx.binding.BindingHelperObserver;
-import com.sun.javafx.property.adapter.PropertyDescriptor;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
-import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -110,5 +104,28 @@ public class Controller {
         this.main = main;
         personTableView.setItems(main.getPersonObservableList());
     }
+
+    @FXML
+    public void deletePerson(ActionEvent actionEvent) {
+        int index = personTableView.getSelectionModel().getSelectedIndex();
+        if (index >= 0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            String firstName = personTableView.getItems().get(index).getFirstName();
+            String lastName = personTableView.getItems().get(index).getLastname();
+            personTableView.getItems().remove(index);
+            alert.setTitle("Info");
+            alert.setHeaderText("Usunąłeś osobę: ");
+            alert.setContentText(firstName + " " + lastName);
+            alert.show();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("Brak pozycji na liście!");
+            alert.setContentText("Nie ma co usunąć");
+            //alert.showAndWait();
+            alert.show();
+        }
+    }
+
 
 }
