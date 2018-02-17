@@ -4,15 +4,21 @@ import com.sda.javafx.Main;
 import com.sda.javafx.model.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Controller {
 
     @FXML
-    private TableView<Person> personTableView;
+    public TableView<Person> personTableView;
 
     @FXML
     private TableColumn<Person, String> firstNameColumn;
@@ -60,9 +66,9 @@ public class Controller {
     //referencja klasy main
     private Main main;
 
-
     public Controller() {
     }
+
 
 
     @FXML
@@ -75,6 +81,8 @@ public class Controller {
         );
 
         personTableView.getSelectionModel().selectedItemProperty().addListener((observable, x, y) -> showPerson(y));
+
+        //personTableView.getSelectionModel().se
     }
 
     public void showPerson(Person person) {
@@ -126,6 +134,20 @@ public class Controller {
             alert.show();
         }
     }
+
+    public void addPersonWindow(ActionEvent actionEvent) throws IOException {
+        AnchorPane addPersonLayout = FXMLLoader.load(getClass().getClassLoader().getResource("AddPerson.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(addPersonLayout);
+
+        stage.setScene(scene);
+
+        stage.show();
+
+
+
+    }
+
 
 
 }

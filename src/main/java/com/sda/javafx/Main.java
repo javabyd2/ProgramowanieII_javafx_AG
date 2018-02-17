@@ -18,7 +18,7 @@ public class Main extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
 
-    private ObservableList<Person> personObservableList = FXCollections.observableArrayList();
+    public ObservableList<Person> personObservableList = FXCollections.observableArrayList();
 
 //    static {
 //
