@@ -1,38 +1,112 @@
 package com.sda.javafx;
 
+import com.sda.javafx.controller.Controller;
 import com.sda.javafx.model.Person;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class Main extends Application {
+
+    private Stage primaryStage;
+    private BorderPane rootLayout;
 
     private ObservableList<Person> personObservableList = FXCollections.observableArrayList();
 
 //    static {
 //
+
+
+//     postalcode;
+//     city;
+//     birthday;
+//     street;
 //    }
 
     public Main() {
-        personObservableList.add(new Person("Jan", "Kowalski"));
-        personObservableList.add(new Person("Andrzej", "Duda"));
+        Person person1 = new Person("Jan", "Kowalski");
+        person1.setPostalcode("00-123");
+        person1.setCity("Warszawa");
+        person1.setBirthday("5-12-1956");
+        person1.setStreet("Mazowiecka 12");
+        personObservableList.add(person1);
+
+        Person person2 = new Person("Andrzej", "Duda");
+        person2.setPostalcode("00-020");
+        person2.setCity("Warszawa");
+        person2.setBirthday("12-02-1934");
+        person2.setStreet("Powstańców Warszawy 3");
+        personObservableList.add(person2);
+
         personObservableList.add(new Person("Adam", "Małysz"));
+
         personObservableList.add(new Person("Karol", "Kozłowski"));
+
         personObservableList.add(new Person("Edyta", "Hetman"));
+
         personObservableList.add(new Person("Sylwia", "Nałęcz"));
+
+        personObservableList.add(new Person("Michał", "Nowa"));
+
+        personObservableList.add(new Person("Antoni", "Głupkowaty"));
+
+        personObservableList.add(new Person("Józef", "Kaczorek"));
+
+        personObservableList.add(new Person("Piotr", "Drwal"));
+
+        personObservableList.add(new Person("Łukasz", "Kaszub"));
+
+        personObservableList.add(new Person("Aneta", "Samborek"));
+
+        personObservableList.add(new Person("Agata", "Małolata"));
+
+        personObservableList.add(new Person("Monika", "Duda"));
+
+        personObservableList.add(new Person("Lucyna", "Małysz"));
+
+        personObservableList.add(new Person("Marek", "Kozłowski"));
+
+        personObservableList.add(new Person("Bartosz", "Hetman"));
+
+        personObservableList.add(new Person("Dionizy", "Nałęcz"));
+    }
+
+
+    public ObservableList<Person> getPersonObservableList() {
+        return personObservableList;
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/RootLayout.fxml"));
-        primaryStage.setTitle("Contacts");
-        Scene scene = new Scene(root);
+        this.primaryStage = primaryStage;
+        initRootLayout();
+        showPersonLayout();
+    }
+
+    public void initRootLayout() throws IOException {
+        rootLayout = FXMLLoader.load(getClass().getClassLoader().getResource("RootLayout.fxml"));
+        Scene scene = new Scene(rootLayout);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public void showPersonLayout() throws IOException {
+
+        FXMLLoader loader = new FXMLLoader((getClass().getClassLoader().getResource("PersonOverview.fxml")));
+
+        AnchorPane person = loader.load();
+        rootLayout.setCenter(person);
+
+
+        Controller controller = loader.getController();
+        controller.setMain(this);
     }
 
     public static void main(String[] args) {

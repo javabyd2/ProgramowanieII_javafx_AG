@@ -4,12 +4,13 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Person {
+
     private StringProperty firstName;
     private StringProperty lastName;
-    private StringProperty streat;
+    private StringProperty postalcode;
     private StringProperty city;
-    private StringProperty postCode;
     private StringProperty birthday;
+    private StringProperty street;
 
     public Person(String firstName, String lastName) {
         this.firstName = new SimpleStringProperty(firstName);
@@ -28,7 +29,7 @@ public class Person {
         this.firstName.set(firstName);
     }
 
-    public String getLastName() {
+    public String getLastname() {
         return lastName.get();
     }
 
@@ -40,16 +41,16 @@ public class Person {
         this.lastName.set(lastName);
     }
 
-    public String getStreat() {
-        return streat.get();
+    public String getPostalcode() {
+        return postalcode.get();
     }
 
-    public StringProperty streatProperty() {
-        return streat;
+    public StringProperty postalcodeProperty() {
+        return postalcode;
     }
 
-    public void setStreat(String streat) {
-        this.streat.set(streat);
+    public void setPostalcode(String postalcode) {
+        this.postalcode = new SimpleStringProperty(postalcode);
     }
 
     public String getCity() {
@@ -61,19 +62,7 @@ public class Person {
     }
 
     public void setCity(String city) {
-        this.city.set(city);
-    }
-
-    public String getPostCode() {
-        return postCode.get();
-    }
-
-    public StringProperty postCodeProperty() {
-        return postCode;
-    }
-
-    public void setPostCode(String postCode) {
-        this.postCode.set(postCode);
+        this.city = new SimpleStringProperty(city);
     }
 
     public String getBirthday() {
@@ -85,6 +74,18 @@ public class Person {
     }
 
     public void setBirthday(String birthday) {
-        this.birthday.set(birthday);
+        this.birthday = new SimpleStringProperty(birthday);
+    }
+
+    public String getStreet() {
+        return street.get();
+    }
+
+    public StringProperty streetProperty() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = new SimpleStringProperty(street);
     }
 }
