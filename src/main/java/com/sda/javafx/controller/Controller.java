@@ -19,13 +19,10 @@ public class Controller {
 
     @FXML
     private TableView<Person> personTableView;
-
     @FXML
     private TableColumn<Person, String> firstNameColumn;
-
     @FXML
     private TableColumn<Person, String> lastNameColumn;
-
     @FXML
     private Label firstNameLabel;
     @FXML
@@ -85,7 +82,6 @@ public class Controller {
         );
 
         personTableView.getSelectionModel().selectedItemProperty().addListener((observable, x, y) -> showPerson(y));
-
     }
 
     public void showPerson(Person person) {
@@ -176,9 +172,5 @@ public class Controller {
         editPersonController.setPostalCode(main.getPersonObservableList().get(index).getPostalcode());
         editPersonController.setCity(main.getPersonObservableList().get(index).getCity());
         editPersonController.setBirthday(main.getPersonObservableList().get(index).getBirthday());
-
-
-
     }
-
 }

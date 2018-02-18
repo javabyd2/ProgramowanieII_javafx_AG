@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
 public class AddPersonController {
 
     @FXML
@@ -23,7 +22,6 @@ public class AddPersonController {
     private TextField city;
     @FXML
     private TextField birthday;
-
     @FXML
     private Button okButton;
     @FXML

@@ -22,7 +22,6 @@ public class EditPersonController {
     private TextField city;
     @FXML
     private TextField birthday;
-
     @FXML
     private Button okButton;
     @FXML
@@ -82,13 +81,10 @@ public class EditPersonController {
 
         Stage stage = (Stage) okButton.getScene().getWindow();
         stage.close();
-
-
     }
 
     public void handleCloseButtonAction(ActionEvent actionEvent) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
-
 }
