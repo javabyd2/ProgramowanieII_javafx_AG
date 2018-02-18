@@ -66,7 +66,7 @@
                            <effect>
                               <DropShadow color="#00ff1e" />
                            </effect></Button>
-                                <Button mnemonicParsing="false" rotate="15.0" text="Edytuj" />
+                                <Button fx:id="buttonEdytuj" mnemonicParsing="false" onAction="#edytujPerson" rotate="15.0" text="Edytuj" />
                                 <Button fx:id="buttonUsun" mnemonicParsing="false" onAction="#deletePerson" rotate="15.0" text="Usuń">
                            <effect>
                               <DropShadow blurType="GAUSSIAN" color="RED" />

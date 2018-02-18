@@ -54,16 +54,6 @@ public class Main extends Application {
 
         personObservableList.add(new Person("Michał", "Nowa"));
 
-        personObservableList.add(new Person("Antoni", "Głupkowaty"));
-
-        personObservableList.add(new Person("Józef", "Kaczorek"));
-
-        personObservableList.add(new Person("Piotr", "Drwal"));
-
-        personObservableList.add(new Person("Łukasz", "Kaszub"));
-
-        personObservableList.add(new Person("Aneta", "Samborek"));
-
         personObservableList.add(new Person("Agata", "Małolata"));
 
         personObservableList.add(new Person("Monika", "Budka"));
@@ -102,7 +92,6 @@ public class Main extends Application {
 
         AnchorPane person = loader.load();
         rootLayout.setCenter(person);
-
 
         Controller controller = loader.getController();
         controller.setMain(this);

@@ -18,7 +18,7 @@ import java.io.IOException;
 public class Controller {
 
     @FXML
-    public TableView<Person> personTableView;
+    private TableView<Person> personTableView;
 
     @FXML
     private TableColumn<Person, String> firstNameColumn;
@@ -63,13 +63,17 @@ public class Controller {
         this.birthdayLabel = birthdayLabel;
     }
 
+    public TableView<Person> getPersonTableView() {
+        return personTableView;
+    }
+
     //referencja klasy main
     private Main main;
 
+    private EditPersonController editPersonController;
+
     public Controller() {
     }
-
-
 
     @FXML
     private void initialize() {
@@ -82,7 +86,6 @@ public class Controller {
 
         personTableView.getSelectionModel().selectedItemProperty().addListener((observable, x, y) -> showPerson(y));
 
-        //personTableView.getSelectionModel().se
     }
 
     public void showPerson(Person person) {
@@ -136,18 +139,46 @@ public class Controller {
     }
 
     public void addPersonWindow(ActionEvent actionEvent) throws IOException {
-        AnchorPane addPersonLayout = FXMLLoader.load(getClass().getClassLoader().getResource("AddPerson.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("AddPerson.fxml"));
+
+        AnchorPane addPersonLayout = loader.load();
+
+        AddPersonController addPersonController = loader.getController();
+        addPersonController.setMain(main);
+
         Stage stage = new Stage();
         Scene scene = new Scene(addPersonLayout);
 
         stage.setScene(scene);
-
         stage.show();
+    }
+
+    public void edytujPerson(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("EditPerson.fxml"));
+
+        AnchorPane editPersonLayout = loader.load();
+
+        EditPersonController editPersonController = loader.getController();
+        editPersonController.setMain(main);
+        editPersonController.setController(this);
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(editPersonLayout);
+
+        stage.setScene(scene);
+        stage.show();
+
+        int index = personTableView.getSelectionModel().getSelectedIndex();
+
+        editPersonController.setFirstName(main.getPersonObservableList().get(index).getFirstName());
+        editPersonController.setLastName(main.getPersonObservableList().get(index).getLastname());
+        editPersonController.setStreet(main.getPersonObservableList().get(index).getStreet());
+        editPersonController.setPostalCode(main.getPersonObservableList().get(index).getPostalcode());
+        editPersonController.setCity(main.getPersonObservableList().get(index).getCity());
+        editPersonController.setBirthday(main.getPersonObservableList().get(index).getBirthday());
 
 
 
     }
-
-
 
 }
